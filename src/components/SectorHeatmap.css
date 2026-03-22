@@ -1,0 +1,104 @@
+.heatmap { overflow: hidden; }
+
+.heatmap__header {
+  padding: 1rem 1.3rem 0.85rem;
+  border-bottom: 1px solid var(--divider);
+}
+.heatmap__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.heatmap__body { padding: 1rem 1.3rem; }
+
+.heatmap__grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.heat-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  transition: transform 0.15s;
+}
+.heat-cell:hover { transform: translateY(-1px); }
+
+.heat-cell--hot  { background: var(--green-bg);  border-color: var(--green-border); }
+.heat-cell--warm { background: var(--amber-bg);  border-color: var(--amber-border); }
+.heat-cell--cool { background: var(--red-bg);    border-color: var(--red-border);   }
+
+.heat-cell__left {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  flex: 1;
+}
+
+.heat-cell__name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.heat-cell__mom {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.heat-cell__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 14px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  gap: 2px;
+}
+
+.heat-cell__count {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.heat-cell__count-label {
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.55;
+  letter-spacing: 0.04em;
+}
+
+/* Colors */
+.heat-cell--hot  .heat-cell__name,
+.heat-cell--hot  .heat-cell__count       { color: var(--green); }
+.heat-cell--hot  .heat-cell__mom,
+.heat-cell--hot  .heat-cell__count-label { color: rgba(0,200,150,0.75); }
+
+.heat-cell--warm .heat-cell__name,
+.heat-cell--warm .heat-cell__count       { color: var(--amber); }
+.heat-cell--warm .heat-cell__mom,
+.heat-cell--warm .heat-cell__count-label { color: rgba(255,170,0,0.75); }
+
+.heat-cell--cool .heat-cell__name        { color: var(--text2); }
+.heat-cell--cool .heat-cell__count       { color: var(--text); }
+.heat-cell--cool .heat-cell__mom,
+.heat-cell--cool .heat-cell__count-label { color: rgba(255,69,96,0.8); }
+
+@media (max-width: 768px) {
+  .heatmap__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .heatmap__grid { grid-template-columns: repeat(2, 1fr); }
+}

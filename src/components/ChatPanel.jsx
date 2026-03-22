@@ -11,15 +11,12 @@ export default function ChatPanel({ signals }) {
   const [messages, setMessages] = useState([])
   const [input, setInput]       = useState('')
   const [loading, setLoading]   = useState(false)
-  const bottomRef               = useRef(null)
-
-  const isFirstRender = useRef(true)
+  const messagesRef = useRef(null)
 
 useEffect(() => {
-  const el = bottomRef.current
-  if (!el) return
+  if (!messagesRef.current) return
 
-  el.scrollIntoView({ behavior: messages.length > 1 ? 'smooth' : 'auto' })
+  messagesRef.current.scrollTop = messagesRef.current.scrollHeight
 }, [messages])
 
   async function send(text) {
@@ -57,7 +54,7 @@ useEffect(() => {
       </div>
 
       <div className="chat__body">
-        <div className="chat__messages">
+        <div className="chat__messages" ref={messagesRef}>
           {messages.length === 0 && (
             <div className="chat__bubble chat__bubble--system">
               {signals.length > 0
@@ -71,7 +68,6 @@ useEffect(() => {
           {loading && (
             <div className="chat__bubble chat__bubble--thinking">Thinking...</div>
           )}
-          <div ref={bottomRef} />
         </div>
 
         {messages.length === 0 && (

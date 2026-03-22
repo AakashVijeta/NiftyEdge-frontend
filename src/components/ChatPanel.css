@@ -3,9 +3,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* Grows naturally, but never exceeds viewport */
-  max-height: calc(100dvh - 250px);
-  overflow-y: hidden;
+  max-height: calc(100vh - 120px);
+  overflow: hidden; /* outer card never scrolls */
   position: relative;
 }
 
@@ -54,6 +53,9 @@
   padding: 1rem 1.3rem;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;       /* critical: allows flex child to shrink below content size */
+  overflow: hidden;    /* clips content, lets messages div handle its own scroll */
   gap: 12px;
 }
 
@@ -61,10 +63,12 @@
 .chat__messages {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 8px;
-  overflow-y: auto;
+  overflow-y: auto;    /* THIS is the scrollable element */
   scroll-behavior: smooth;
   padding-right: 4px;
+  min-height: 0;       /* critical: lets it shrink and scroll within flex parent */
 }
 .chat__messages::-webkit-scrollbar { width: 4px; }
 .chat__messages::-webkit-scrollbar-track { background: transparent; }

@@ -3,3 +3,4 @@
   to = "https://query2.finance.yahoo.com/:splat"
   status = 200
   force = true
+  query = {interval = ":interval", range = ":range"}

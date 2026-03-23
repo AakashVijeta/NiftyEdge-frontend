@@ -1,6 +1,4 @@
 [[redirects]]
-  from = "/yahoo2/*"
-  to = "https://query2.finance.yahoo.com/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200
-  force = true
-  query = {interval = ":interval", range = ":range"}

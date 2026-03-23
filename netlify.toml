@@ -3,4 +3,3 @@
   to = "https://query2.finance.yahoo.com/:splat"
   status = 200
   force = true
-  headers = {Cache-Control = "no-cache, no-store, must-revalidate"}

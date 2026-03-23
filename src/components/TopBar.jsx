@@ -26,7 +26,7 @@ function useNiftyPrice() {
     async function fetchPrice() {
       try {
         // Stooq CSV: ^NI225 = Nifty 50, returns: Date,Open,High,Low,Close,Volume
-        const res = await window.fetch(`/yahoo2/v8/finance/chart/%5ENSEI?interval=1d&range=5d&_=${Date.now()}`)
+        const res  = await window.fetch('/yahoo/v8/finance/chart/%5ENSEI?interval=1d&range=5d')
         const text = await res.text()
         const rows = text.trim().split('\n')
         // Last two rows = today and yesterday

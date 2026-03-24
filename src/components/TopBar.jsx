@@ -20,35 +20,39 @@ function isMarketOpen() {
 }
 
 function useNiftyPrice() {
-  const [data, setData] = useState({ price: null, change: null, changePct: null })
+  const [data, setData] = useState({ price: null, change: null, changePct: null });
 
   useEffect(() => {
     async function fetchPrice() {
-      try {
-        // Stooq CSV: ^NI225 = Nifty 50, returns: Date,Open,High,Low,Close,Volume
-        const res  = await window.fetch('/yahoo/v8/finance/chart/%5ENSEI?interval=1d&range=5d')
-        const text = await res.text()
-        const rows = text.trim().split('\n')
-        // Last two rows = today and yesterday
-        const latest = rows[rows.length - 1].split(',')
-        const prev   = rows[rows.length - 2].split(',')
-        const price     = parseFloat(latest[4])   // Close
-        const prevClose = parseFloat(prev[4])
-        const change    = +(price - prevClose).toFixed(2)
-        const changePct = +((change / prevClose) * 100).toFixed(2)
-        if (!isNaN(price)) setData({ price, change, changePct })
-      } catch {
-        // silently fail
-      }
+  try {
+    const res = await window.fetch('/api/nifty');
+    const json = await res.json();
+
+    // Yahoo's path to data
+    const result = json.chart.result[0];
+    const price = result.meta.regularMarketPrice;
+    const prevClose = result.meta.chartPreviousClose;
+    
+    const change = +(price - prevClose).toFixed(2);
+    const changePct = +((change / prevClose) * 100).toFixed(2);
+
+    if (!isNaN(price)) {
+      setData({ price, change, changePct });
     }
+  } catch (err) {
+    console.error("Nifty Fetch Error:", err);
+  }
+}
+    fetchPrice();
+    
+    // Check if isMarketOpen exists in your utils, otherwise remove this guard
+    // if (typeof isMarketOpen === 'function' && !isMarketOpen()) return;
 
-    fetchPrice()
-    if (!isMarketOpen()) return
-    const t = setInterval(fetchPrice, 5 * 60 * 1000)
-    return () => clearInterval(t)
-  }, [])
+    const t = setInterval(fetchPrice, 5 * 60 * 1000); // 5 minutes
+    return () => clearInterval(t);
+  }, []);
 
-  return data
+  return data;
 }
 
 export default function TopBar({ onRefetch }) {

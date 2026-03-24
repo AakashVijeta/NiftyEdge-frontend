@@ -1,7 +1,7 @@
 export default async (req) => {
   try {
     // We use range=1d and interval=1m for the most recent data
-    const url = 'https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?interval=1d&range=5d';
+    const url = 'https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?interval=1m&range=1d';
     
     const res = await fetch(url, {
       headers: {

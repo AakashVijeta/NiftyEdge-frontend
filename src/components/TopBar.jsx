@@ -28,14 +28,17 @@ function useNiftyPrice() {
     const res = await window.fetch('/api/nifty');
     const json = await res.json();
     
-    // Access the 'meta' object which contains the official previous close
+    // The 'meta' object is the official source for the correct "Previous Close"
     const result = json.chart.result[0];
     const meta = result.meta;
 
-    const price = meta.regularMarketPrice;      // Current live price (e.g., 22,912.40)
-    const prevClose = meta.chartPreviousClose;  // Official close of March 23 (22,512.65)
+    // Today's current live price: ~22,912.40
+    const price = meta.regularMarketPrice; 
     
-    // Now the math will be correct: (22912.40 - 22512.65) = +399.75
+    // Yesterday's actual close (March 23): 22,512.65
+    const prevClose = meta.chartPreviousClose; 
+    
+    // Final Calculation: (22,912.40 - 22,512.65) = +399.75
     const change = +(price - prevClose).toFixed(2);
     const changePct = +((change / prevClose) * 100).toFixed(2);
 
@@ -47,9 +50,6 @@ function useNiftyPrice() {
   }
 }
     fetchPrice();
-    
-    // Check if isMarketOpen exists in your utils, otherwise remove this guard
-    // if (typeof isMarketOpen === 'function' && !isMarketOpen()) return;
 
     const t = setInterval(fetchPrice, 5 * 60 * 1000); // 5 minutes
     return () => clearInterval(t);

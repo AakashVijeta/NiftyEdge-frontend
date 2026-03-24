@@ -27,12 +27,15 @@ function useNiftyPrice() {
   try {
     const res = await window.fetch('/api/nifty');
     const json = await res.json();
-
-    // Yahoo's path to data
-    const result = json.chart.result[0];
-    const price = result.meta.regularMarketPrice;
-    const prevClose = result.meta.chartPreviousClose;
     
+    // Access the 'meta' object which contains the official previous close
+    const result = json.chart.result[0];
+    const meta = result.meta;
+
+    const price = meta.regularMarketPrice;      // Current live price (e.g., 22,912.40)
+    const prevClose = meta.chartPreviousClose;  // Official close of March 23 (22,512.65)
+    
+    // Now the math will be correct: (22912.40 - 22512.65) = +399.75
     const change = +(price - prevClose).toFixed(2);
     const changePct = +((change / prevClose) * 100).toFixed(2);
 

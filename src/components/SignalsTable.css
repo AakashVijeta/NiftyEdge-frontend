@@ -88,7 +88,7 @@
 .signals__table tr:last-child td { border-bottom: none; }
 
 .signals__table tbody tr:hover td {
-  background: rgba(124,110,245,0.05);
+  background: rgba(0,212,160,0.05);
 }
 
 .sig-ticker {

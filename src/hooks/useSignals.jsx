@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const API = 'https://niftyedge-backend-production.up.railway.app'
+const API = 'http://127.0.0.1:8000'
 
 export function useSignals() {
   const [signals, setSignals]         = useState([])

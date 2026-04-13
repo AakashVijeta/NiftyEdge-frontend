@@ -84,17 +84,17 @@
 .heat-cell--hot  .heat-cell__name,
 .heat-cell--hot  .heat-cell__count       { color: var(--green); }
 .heat-cell--hot  .heat-cell__mom,
-.heat-cell--hot  .heat-cell__count-label { color: rgba(0,200,150,0.75); }
+.heat-cell--hot  .heat-cell__count-label { color: rgba(80,250,123,0.75); }
 
 .heat-cell--warm .heat-cell__name,
 .heat-cell--warm .heat-cell__count       { color: var(--amber); }
 .heat-cell--warm .heat-cell__mom,
-.heat-cell--warm .heat-cell__count-label { color: rgba(255,170,0,0.75); }
+.heat-cell--warm .heat-cell__count-label { color: rgba(255,184,108,0.75); }
 
 .heat-cell--cool .heat-cell__name        { color: var(--text2); }
 .heat-cell--cool .heat-cell__count       { color: var(--text); }
 .heat-cell--cool .heat-cell__mom,
-.heat-cell--cool .heat-cell__count-label { color: rgba(255,69,96,0.8); }
+.heat-cell--cool .heat-cell__count-label { color: rgba(255,85,85,0.8); }
 
 @media (max-width: 768px) {
   .heatmap__grid { grid-template-columns: repeat(3, 1fr); }

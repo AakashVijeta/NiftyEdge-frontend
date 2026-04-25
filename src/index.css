@@ -1,39 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:            #282a36;
-  --surface:       #343746;
-  --surface2:      #3d4051;
-  --surface3:      #44475a;
-  --divider:       rgba(248,248,242,0.08);
+  --bg:            #070b14;
+  --surface:       #0d1425;
+  --surface2:      #111d35;
+  --surface3:      #1a2744;
+  --divider:       rgba(59,130,246,0.10);
 
-  --text:          #f8f8f2;
-  --text2:         #bfbfd4;
-  --text3:         #6272a4;
+  --text:          #f0f4ff;
+  --text2:         #8899bb;
+  --text3:         #4a5d82;
 
-  --accent:        #00d4a0;
-  --accent-light:  #5cf0c8;
-  --accent-dim:    rgba(0,212,160,0.15);
-  --accent-glow:   rgba(0,212,160,0.3);
-  --accent-border: rgba(0,212,160,0.4);
+  --accent:        #3b82f6;
+  --accent-light:  #60a5fa;
+  --accent-dim:    rgba(59,130,246,0.12);
+  --accent-glow:   rgba(59,130,246,0.25);
+  --accent-border: rgba(59,130,246,0.20);
 
-  --green:         #50fa7b;
-  --green-bg:      rgba(80,250,123,0.13);
-  --green-border:  rgba(80,250,123,0.28);
-  --red:           #ff5555;
-  --red-bg:        rgba(255,85,85,0.13);
-  --red-border:    rgba(255,85,85,0.28);
-  --amber:         #ffb86c;
-  --amber-bg:      rgba(255,184,108,0.13);
-  --amber-border:  rgba(255,184,108,0.28);
+  --green:         #22d3a0;
+  --green-bg:      rgba(34,211,160,0.12);
+  --green-border:  rgba(34,211,160,0.25);
+  --red:           #f43f5e;
+  --red-bg:        rgba(244,63,94,0.12);
+  --red-border:    rgba(244,63,94,0.25);
+  --amber:         #f59e0b;
+  --amber-bg:      rgba(245,158,11,0.12);
+  --amber-border:  rgba(245,158,11,0.25);
 
-  --font-sans:     'DM Sans', sans-serif;
-  --font-mono:     'DM Mono', monospace;
+  --font-sans:     'Inter', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
 
-  --radius:        10px;
-  --radius-sm:     7px;
+  --radius:        12px;
+  --radius-sm:     8px;
   --gap:           16px;
 }
 
@@ -58,10 +58,11 @@ body {
   background: var(--surface);
   border: 1px solid var(--divider);
   border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
 .card--accent {
   border-color: var(--accent-border);
-  box-shadow: 0 0 24px rgba(0,212,160,0.1);
+  box-shadow: 0 0 0 1px var(--accent-border), 0 4px 32px rgba(59,130,246,0.12);
 }
 
 /* ── Pills ── */
@@ -69,16 +70,16 @@ body {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 500;
   padding: 2px 9px;
   border-radius: 4px;
   white-space: nowrap;
 }
-.pill--up   { background: var(--green-bg);  color: var(--green); }
-.pill--down { background: var(--red-bg);    color: var(--red);   }
-.pill--mid  { background: var(--amber-bg);  color: var(--amber); }
-.pill--neu  { background: var(--surface3);  color: var(--text2); }
+.pill--up   { background: var(--green-bg);  color: var(--green);  border: 1px solid var(--green-border); }
+.pill--down { background: var(--red-bg);    color: var(--red);    border: 1px solid var(--red-border);   }
+.pill--mid  { background: var(--amber-bg);  color: var(--amber);  border: 1px solid var(--amber-border); }
+.pill--neu  { background: var(--surface3);  color: var(--text2);  border: 1px solid var(--divider);      }
 
 /* ── Animations ── */
 @keyframes fadeUp {

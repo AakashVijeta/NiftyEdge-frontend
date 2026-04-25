@@ -1,6 +1,6 @@
 # NiftyEdge
 
-A real-time trading signals dashboard for the Nifty 50, built with React and Vite. NiftyEdge surfaces ranked setups, sector momentum, and an AI analyst chat into a single three-column dashboard.
+A real-time trading signals dashboard for the Nifty 50, built with React and Vite. NiftyEdge surfaces ranked setups, sector momentum, and an analyst chat panel into a single three-column dashboard.
 
 ![Status](https://img.shields.io/badge/status-active-00d4a0)
 ![React](https://img.shields.io/badge/React-19-50fa7b)
@@ -14,7 +14,7 @@ NiftyEdge is the frontend for a signals engine that scores Nifty 50 constituents
 - **Top Pick** — highest-conviction trade idea of the session
 - **Sector Heatmap** — cluster momentum across sectors (hot / warm / cool)
 - **Portfolio Metrics** — aggregate counts and breakdowns
-- **AI Analyst Chat** — context-aware chat grounded in the current signal set
+- **Analyst Chat** — context-aware chat grounded in the current signal set
 - **Live Nifty 50 ticker** — streamed via a Netlify Edge Function proxying Yahoo Finance
 
 The theme is a Dracula-inspired dark palette with an emerald accent.
@@ -33,24 +33,25 @@ The theme is a Dracula-inspired dark palette with an emerald accent.
 ## Project Structure
 
 ```
-d:/NiftyEdge
 ├── public/                 # Static assets (favicon, icon sprite)
 ├── netlify/
 │   └── edge-functions/
 │       └── nifty.js        # /api/nifty — Yahoo Finance proxy
 ├── src/
 │   ├── App.jsx             # Three-column dashboard shell
+│   ├── App.css
 │   ├── main.jsx            # React entry point
 │   ├── index.css           # Global theme tokens (CSS variables)
 │   ├── hooks/
-│   │   └── useSignals.jsx  # Fetches /signals from backend
+│   │   ├── useSignals.jsx  # Fetches /signals from backend
+│   │   └── useCountUp.js   # Animated number counter
 │   └── components/
 │       ├── TopBar.jsx      # Header + live Nifty price + refresh
 │       ├── Metrics.jsx     # Aggregate signal stats
 │       ├── TopPick.jsx     # Headline trade idea
 │       ├── SignalsTable.jsx
 │       ├── SectorHeatmap.jsx
-│       └── ChatPanel.jsx   # AI analyst chat
+│       └── ChatPanel.jsx   # Analyst chat panel
 ├── netlify.toml
 ├── vite.config.js
 └── package.json

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './SignalsTable.css'
 
 function volLevel(v)  { return v >= 1.5 ? 'up' : v >= 1.1 ? 'mid' : 'neu' }
@@ -7,7 +7,13 @@ function rsiColor(v)  { return v >= 60 ? 'var(--amber)' : v >= 45 ? 'var(--green
 
 export default function SignalsTable({ signals }) {
   const sectors = ['All', ...new Set(signals.map(s => s.sector))]
-  const [active, setActive] = useState('All')
+  const [active,  setActive]  = useState('All')
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 50)
+    return () => clearTimeout(t)
+  }, [])
 
   const filtered = active === 'All' ? signals : signals.filter(s => s.sector === active)
 
@@ -62,7 +68,7 @@ export default function SignalsTable({ signals }) {
                     </span>
                     <div className="sig-rsi-bar">
                       <div className="sig-rsi-fill" style={{
-                        width: `${Math.min(sig.rsi ?? 0, 100)}%`,
+                        width: mounted ? `${Math.min(sig.rsi ?? 0, 100)}%` : '0%',
                         background: rsiColor(sig.rsi),
                       }} />
                     </div>

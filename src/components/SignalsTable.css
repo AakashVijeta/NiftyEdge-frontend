@@ -1,153 +1,146 @@
-.signals {
-  padding: 0;
-  overflow: hidden;
-}
+.signals { overflow: hidden; }
 
 .signals__header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 1rem 1.3rem 0.75rem;
-  border-bottom: 1px solid var(--divider);
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
+  padding: 1rem 1.25rem 0.85rem;
+  border-bottom: 1px solid var(--divider);
 }
 
 .signals__title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--text);
+  letter-spacing: 0.02em;
+  margin-right: 8px;
 }
 
 .signals__count {
-  font-size: 1.02rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 400;
   color: var(--text3);
-  margin-left: 6px;
 }
 
 .signals__filters {
   display: flex;
-  gap: 5px;
   flex-wrap: wrap;
+  gap: 5px;
 }
 
 .filter-btn {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--divider);
   color: var(--text2);
   background: transparent;
+  border: 1px solid var(--divider);
+  padding: 4px 11px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.15s;
+  letter-spacing: 0.02em;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
 }
-
-.filter-btn:hover {
-  border-color: var(--accent-border);
-  color: var(--text);
-}
-
+.filter-btn:hover  { background: var(--surface2); color: var(--text); border-color: var(--accent-border); }
+.filter-btn:active { transform: scale(0.97); }
 .filter-btn--active {
   background: var(--accent-dim);
   border-color: var(--accent-border);
   color: var(--accent-light);
 }
 
+.signals__empty {
+  padding: 2rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text3);
+  text-align: center;
+}
+
 /* Table */
 .signals__table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.85rem;
 }
 
-.signals__table thead tr {
+.signals__table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background: var(--surface2);
 }
 
 .signals__table th {
-  font-size: 1.1rem;
-  font-weight: 600;
+  padding: 0.65rem 1rem;
+  font-size: 0.68rem;
+  font-weight: 700;
   color: var(--text3);
-  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 9px 14px;
+  letter-spacing: 0.08em;
   text-align: left;
+  border-bottom: 1px solid var(--divider);
   white-space: nowrap;
 }
-
 .signals__table th:not(:first-child) { text-align: right; }
 
-.signals__table td {
-  padding: 10px 14px;
+.signals__table tbody tr {
   border-bottom: 1px solid var(--divider);
+  transition: background 0.15s ease;
+}
+.signals__table tbody tr:last-child { border-bottom: none; }
+.signals__table tbody tr:hover { background: var(--surface2); }
+
+.signals__table td {
+  padding: 0.7rem 1rem;
   vertical-align: middle;
 }
 
-.signals__table tr:last-child td { border-bottom: none; }
-
-.signals__table tbody tr:hover td {
-  background: rgba(0,212,160,0.05);
-}
-
 .sig-ticker {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 1.02rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--text);
+  line-height: 1.3;
 }
-
 .sig-sector {
-  font-size: 1.08rem;
-  font-weight: 400;
+  font-size: 0.7rem;
   color: var(--text3);
   margin-top: 2px;
 }
 
 .sig-prob-cell { text-align: right; }
-
 .sig-prob {
   font-family: var(--font-mono);
+  font-size: 0.88rem;
   font-weight: 500;
-  font-size: 1rem;
   color: var(--accent-light);
 }
 
-.sig-rsi-cell { text-align: right; }
-
+.sig-rsi-cell { text-align: right; min-width: 80px; }
 .sig-rsi-val {
   font-family: var(--font-mono);
-  font-size: 1.02rem;
-  font-weight: 400;
+  font-size: 0.82rem;
+  font-weight: 500;
   display: block;
   text-align: right;
+  margin-bottom: 4px;
 }
-
 .sig-rsi-bar {
-  height: 3px;
+  height: 4px;
   background: var(--surface3);
   border-radius: 2px;
-  margin-top: 4px;
   overflow: hidden;
   width: 60px;
   margin-left: auto;
 }
-
 .sig-rsi-fill {
   height: 100%;
   border-radius: 2px;
-  transition: width 0.4s ease;
+  transition: width 0.6s ease-out 0.3s;
 }
 
 .sig-chip-cell { text-align: right; }
 
-.signals__empty {
-  padding: 1.5rem 1.3rem;
-  font-size: 0.8rem;
-  color: var(--text3);
-}
-
-@media (max-width: 520px) {
-  .signals__table .col-sm { display: none; }
-}
+@media (max-width: 520px) { .col-sm { display: none; } }

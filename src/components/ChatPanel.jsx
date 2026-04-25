@@ -25,6 +25,13 @@ export default function ChatPanel({ signals }) {
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
+  useEffect(() => {
+    if (!isOpen) return
+    function onKey(e) { if (e.key === 'Escape') setIsOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [isOpen])
+
   async function send(text) {
     const msg = (text || input).trim()
     if (!msg || loading) return
@@ -66,6 +73,8 @@ export default function ChatPanel({ signals }) {
         className="chat-trigger"
         onClick={() => setIsOpen(true)}
         aria-label="Open AI Analyst"
+        tabIndex={isOpen ? -1 : 0}
+        aria-hidden={isOpen}
       >
         AI ↗
       </button>

@@ -5,23 +5,46 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 150;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--accent-light);
   background: var(--surface2);
   border: 1px solid var(--accent-border);
   border-right: none;
-  padding: 16px 10px;
+  padding: 10px 12px;
   border-radius: 8px 0 0 8px;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
 }
 .chat-trigger:hover {
   background: var(--surface3);
   box-shadow: -4px 0 20px var(--accent-glow);
+}
+
+/* ── Collapse tab — sticks out left of open drawer ── */
+.chat__collapse-tab {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  z-index: 201;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  background: var(--surface2);
+  border: 1px solid var(--accent-border);
+  border-right: none;
+  padding: 10px 10px;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.chat__collapse-tab:hover {
+  background: var(--surface3);
+  box-shadow: -4px 0 16px var(--accent-glow);
 }
 
 /* ── Backdrop ── */

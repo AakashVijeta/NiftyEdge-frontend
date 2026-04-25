@@ -17,6 +17,7 @@ export function useSignals() {
       setError(null)
       const res = await axios.get(`${API}/signals`)
       setSignals(res.data)
+      setError(null)
       setLastUpdated(new Date())
     } catch {
       setError('Failed to fetch signals. Is the backend running?')

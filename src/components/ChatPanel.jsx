@@ -84,6 +84,15 @@ export default function ChatPanel({ signals }) {
       )}
 
       <div className={`chat${isOpen ? ' chat--open' : ''}`} role="dialog" aria-label="AI Analyst">
+        {isOpen && (
+          <button
+            className="chat__collapse-tab"
+            onClick={() => setIsOpen(false)}
+            aria-label="Collapse AI Analyst"
+          >
+            AI ›
+          </button>
+        )}
         <div className="chat__header">
           <div className="chat__title">AI Analyst</div>
           <span className="chat__badge">NiftyEdge</span>

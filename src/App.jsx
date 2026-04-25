@@ -15,7 +15,7 @@ export default function App() {
       <TopBar onRefetch={refetch} />
 
       <div className="app">
-        {error && <div className="error-banner fade-up">{error}</div>}
+        {error && signals.length === 0 && <div className="error-banner fade-up">{error}</div>}
 
         {loading ? (
           <div className="loading-state">

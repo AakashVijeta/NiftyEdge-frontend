@@ -68,7 +68,7 @@
 
 .signals__table thead {
   position: sticky;
-  top: 0;
+  top: 64px;
   z-index: 1;
   background: var(--surface2);
 }

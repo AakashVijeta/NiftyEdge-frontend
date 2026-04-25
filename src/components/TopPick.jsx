@@ -46,7 +46,7 @@ export default function TopPick({ signal }) {
       </div>
 
       <div className="top-pick__bar-track">
-        <div className="top-pick__bar-fill" style={{ width: mounted ? `${pct}%` : '0%' }} />
+        <div className="top-pick__bar-fill" style={{ width: mounted ? `${Math.min(parseFloat(pct), 100)}%` : '0%' }} />
       </div>
 
       <div className="top-pick__divider" />

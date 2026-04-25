@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import './TopPick.css'
 
 function StatBox({ label, value, color }) {
@@ -10,6 +11,13 @@ function StatBox({ label, value, color }) {
 }
 
 export default function TopPick({ signal }) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 50)
+    return () => clearTimeout(t)
+  }, [])
+
   if (!signal) return (
     <div className="card top-pick">
       <div className="top-pick__empty">No signals today</div>
@@ -38,18 +46,18 @@ export default function TopPick({ signal }) {
       </div>
 
       <div className="top-pick__bar-track">
-        <div className="top-pick__bar-fill" style={{ width: `${pct}%` }} />
+        <div className="top-pick__bar-fill" style={{ width: mounted ? `${pct}%` : '0%' }} />
       </div>
 
       <div className="top-pick__divider" />
 
       <div className="top-pick__stats">
-        <StatBox label="RSI"           value={signal.rsi?.toFixed(1) ?? '—'}                                    color={rsiColor} />
-        <StatBox label="Vol Ratio"     value={signal.volume_ratio ? `${signal.volume_ratio.toFixed(2)}×` : '—'} color={volColor} />
-        <StatBox label="BB Position"   value={signal.bb_position?.toFixed(2) ?? '—'}                            color={bbColor}  />
-        <StatBox label="Sector Mom."   value={signal.sector_momentum ? `${(signal.sector_momentum*100).toFixed(1)}%` : '—'} color={smColor} />
-        <StatBox label="vs Nifty"      value={signal.rs_vs_nifty ? `+${signal.rs_vs_nifty.toFixed(1)}` : '—'}  color="var(--green)" />
-        <StatBox label="Rank"          value="#1"                                                               color="var(--text2)" />
+        <StatBox label="RSI"         value={signal.rsi?.toFixed(1) ?? '—'}                                         color={rsiColor} />
+        <StatBox label="Vol Ratio"   value={signal.volume_ratio ? `${signal.volume_ratio.toFixed(2)}×` : '—'}      color={volColor} />
+        <StatBox label="BB Position" value={signal.bb_position?.toFixed(2) ?? '—'}                                 color={bbColor}  />
+        <StatBox label="Sector Mom." value={signal.sector_momentum ? `${(signal.sector_momentum*100).toFixed(1)}%` : '—'} color={smColor} />
+        <StatBox label="vs Nifty"    value={signal.rs_vs_nifty ? `+${signal.rs_vs_nifty.toFixed(1)}` : '—'}        color="var(--green)" />
+        <StatBox label="Rank"        value="#1"                                                                     color="var(--text2)" />
       </div>
 
       <div className="top-pick__actions">

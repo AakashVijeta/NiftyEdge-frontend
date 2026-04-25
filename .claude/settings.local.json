@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(xxd \"D:/NiftyEdge/src/components/TopBar.jsx\")",
+      "Bash(xxd \"D:/NiftyEdge/src/components/TopBar.css\")"
+    ]
+  }
+}

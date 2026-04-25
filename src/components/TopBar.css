@@ -1,11 +1,18 @@
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 0 1.1rem;
   flex-wrap: wrap;
   gap: 1rem;
-  position: relative;
+  padding: 1rem 1.25rem;
+  background: rgba(7,11,20,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--divider);
+  box-shadow: 0 1px 0 rgba(59,130,246,0.12);
 }
 
 .topbar__brand { display: flex; align-items: center; gap: 12px; }
@@ -13,7 +20,7 @@
 .topbar__logo {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   color: var(--text);
   letter-spacing: -0.5px;
   line-height: 1;
@@ -21,8 +28,8 @@
 .topbar__logo span { color: var(--accent); }
 
 .topbar__sub {
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-size: 0.72rem;
+  font-weight: 500;
   color: var(--text3);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -33,22 +40,54 @@
 .topbar__right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
+/* Market status chip */
+.topbar__market-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 5px 13px;
+  border-radius: 20px;
+}
+.topbar__market-status--open {
+  color: var(--green);
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+}
+.topbar__market-status--closed {
+  color: var(--text3);
+  background: var(--surface2);
+  border: 1px solid var(--divider);
+}
+
+.topbar__market-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.topbar__market-status--open  .topbar__market-dot { background: var(--green); animation: pulse 1.8s ease-in-out infinite; }
+.topbar__market-status--closed .topbar__market-dot { background: var(--text3); }
+
+/* NIFTY 50 block */
 .topbar__index-card {
   display: flex;
   align-items: center;
   gap: 10px;
   background: var(--surface2);
   border: 1px solid var(--divider);
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: 8px;
 }
 
 .topbar__index-name {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--text3);
   letter-spacing: 0.1em;
@@ -57,71 +96,49 @@
 
 .topbar__index-price {
   font-family: var(--font-mono);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--text);
+  border-radius: 4px;
+  padding: 0 3px;
+  transition: background 0.4s ease;
 }
-.topbar__index-price--up   { color: var(--green); }
-.topbar__index-price--down { color: var(--red);   }
+.topbar__index-price--up    { color: var(--green); }
+.topbar__index-price--down  { color: var(--red); }
+.topbar__index-price--flash { background: var(--accent-glow); }
 
-.topbar__index-change {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 400;
-}
+.topbar__index-change { font-family: var(--font-mono); font-size: 0.82rem; }
 .topbar__index-change--up   { color: var(--green); }
-.topbar__index-change--down { color: var(--red);   }
+.topbar__index-change--down { color: var(--red); }
 
 .topbar__divider {
   width: 1px;
-  height: 24px;
+  height: 22px;
   background: var(--divider);
-}
-
-.topbar__live {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--green);
-  background: var(--green-bg);
-  border: 1px solid var(--green-border);
-  padding: 6px 14px;
-  border-radius: 6px;
-}
-
-.topbar__live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 1.8s ease-in-out infinite;
-  flex-shrink: 0;
 }
 
 .topbar__clock {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text2);
   letter-spacing: 0.04em;
 }
 
 .topbar__refresh {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent-light);
   background: var(--accent-dim);
   border: 1px solid var(--accent-border);
-  padding: 7px 16px;
+  padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.15s;
   letter-spacing: 0.02em;
+  transition: background 0.15s, transform 0.1s;
 }
-.topbar__refresh:hover { background: rgba(0,212,160,0.25); }
+.topbar__refresh:hover  { background: rgba(59,130,246,0.22); }
+.topbar__refresh:active { transform: scale(0.97); }
 
 @media (max-width: 700px) { .topbar__sub { display: none; } }
-@media (max-width: 540px) { .topbar__index-change { display: none; } }
+@media (max-width: 580px) { .topbar__index-change { display: none; } }
 @media (max-width: 480px) { .topbar__clock { display: none; } }

@@ -1,153 +1,115 @@
-# NiftyEdge
+# 💎 NiftyEdge
+### The Ultimate Swing Trading Command Center for Nifty 50
 
-A real-time trading signals dashboard for the Nifty 50, built with React and Vite. NiftyEdge surfaces ranked setups, sector momentum, and an analyst chat panel into a single three-column dashboard.
+![NiftyEdge Dashboard](docs/assets/dashboard.png)
 
-![Status](https://img.shields.io/badge/status-active-00d4a0)
-![React](https://img.shields.io/badge/React-19-50fa7b)
-![Vite](https://img.shields.io/badge/Vite-8-bd93f9)
+<div align="center">
 
-## Overview
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify)](https://www.netlify.com/)
+[![Status](https://img.shields.io/badge/Status-Active-00d4a0?style=for-the-badge)](https://niftyedge.netlify.app)
 
-NiftyEdge is the frontend for a signals engine that scores Nifty 50 constituents on momentum, volume, and confirmation criteria. The UI presents:
+</div>
 
-- **Signals Table** — ranked list of actionable setups with key metrics
-- **Top Pick** — highest-conviction trade idea of the session
-- **Sector Heatmap** — cluster momentum across sectors (hot / warm / cool)
-- **Portfolio Metrics** — aggregate counts and breakdowns
-- **Analyst Chat** — context-aware chat grounded in the current signal set
-- **Live Nifty 50 ticker** — streamed via a Netlify Edge Function proxying Yahoo Finance
+---
 
-The theme is a Dracula-inspired dark palette with an emerald accent.
+## 🚀 Overview
 
-## Tech Stack
+**NiftyEdge** is a premium, real-time trading dashboard designed to surface high-probability swing trading setups within the Nifty 50 universe. It serves as the visual command center for a proprietary machine-learning engine, providing traders with institutional-grade data visualization and AI-powered technical analysis.
 
-| Layer | Tool |
-|---|---|
-| Framework | React 19 |
-| Build | Vite 8 |
-| HTTP | Axios + native `fetch` |
-| Hosting | Netlify (static + Edge Functions) |
-| Backend (separate repo) | FastAPI on Railway |
-| Data source | Yahoo Finance (Nifty 50 quote) |
+🌐 **Live Demo:** [niftyedge.netlify.app](https://niftyedge.netlify.app)
 
-## Project Structure
+---
 
-```
-├── public/                 # Static assets (favicon, icon sprite)
-├── netlify/
-│   └── edge-functions/
-│       └── nifty.js        # /api/nifty — Yahoo Finance proxy
+## ✨ Key Features
+
+- **🎯 Actionable Signals** — Ranked list of setups with confidence scores, RSI indicators, and volume confirmation.
+- **🔥 Sector Momentum** — Real-time tracking of capital flow across IT, Energy, Consumer, Auto, and FMCG sectors.
+- **💎 Top Pick Spotlight** — A dedicated high-conviction card featuring detailed breakdown: RSI, Vol Ratio, BB Position, and R:R targets.
+- **🤖 AI Analyst Logic** — Integrated sidekick (accessible via the 'AI' float) that provides context-aware trade commentary.
+- **⚡ Market Pulse** — Live Nifty 50 indexing, signal counts, and aggregate model confidence metrics.
+- **📈 Backtest Transparency** — Integrated win-rate metrics and trade parameter tracking (2.5% TP / 1.0% SL).
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology | Role |
+| :--- | :--- | :--- |
+| **Core** | **React 19** | Modern, declarative UI foundation |
+| **Build** | **Vite** | Lightning-fast HMR and optimized bundling |
+| **Logic** | **Netlify Edge** | Serverless functions for high-performance data proxying |
+| **Intelligence** | **FastAPI + XGBoost** | Separate backend engine for signal generation |
+| **Design** | **CSS Variables** | Token-based theme system with glassmorphic accents |
+
+---
+
+## 📂 Project Structure
+
+```text
 ├── src/
-│   ├── App.jsx             # Three-column dashboard shell
-│   ├── App.css
-│   ├── main.jsx            # React entry point
-│   ├── index.css           # Global theme tokens (CSS variables)
-│   ├── hooks/
-│   │   ├── useSignals.jsx  # Fetches /signals from backend
-│   │   └── useCountUp.js   # Animated number counter
-│   └── components/
-│       ├── TopBar.jsx      # Header + live Nifty price + refresh
-│       ├── Metrics.jsx     # Aggregate signal stats
-│       ├── TopPick.jsx     # Headline trade idea
-│       ├── SignalsTable.jsx
-│       ├── SectorHeatmap.jsx
-│       └── ChatPanel.jsx   # Analyst chat panel
-├── netlify.toml
-├── vite.config.js
-└── package.json
+│   ├── components/       # Reusable UI (ChatPanel, SignalsTable, etc.)
+│   ├── hooks/            # Logic (useSignals, useNiftyPrice)
+│   ├── App.jsx           # Dashboard layout shell
+│   └── index.css         # Dracula-inspired design tokens
+├── netlify/
+│   └── edge-functions/   # Performance-optimized API proxies
+├── public/               # Static assets & redirects
+└── docs/assets/          # Project documentation media
 ```
 
-## Getting Started
+---
 
-### Prerequisites
+## 🎨 Design System
 
+NiftyEdge utilizes a **Cinematic Dark** aesthetic optimized for high-density data processing and visual focus.
+
+- **Primary Palette:** Deep Navy (`#070b14`) background with Electric Blue and Emerald Green accents.
+- **Typography:** Inter for clarity, JetBrains Mono for technical data points.
+- **Visual Style:** High-contrast cards, glowing confidence bars, and a clean three-column grid layout.
+- **Interactions:** Responsive filtering by sector (IT, Energy, Auto, etc.) and real-time state updates.
+
+---
+
+## 🚦 Getting Started
+
+### 1. Prerequisites
 - Node.js 18+
-- A running NiftyEdge backend exposing `/signals` and `/chat` (see **Backend** below)
+- [NiftyEdge API](https://github.com/AakashVijeta/NiftyEdge-backend) (running locally or deployed)
 
-### Install & run
-
+### 2. Installation
 ```bash
+git clone https://github.com/AakashVijeta/NiftyEdge.git
+cd NiftyEdge
 npm install
+```
+
+### 3. Configuration
+The dashboard communicates with the signal engine. Update the API endpoints in:
+- `src/hooks/useSignals.jsx`
+- `src/components/ChatPanel.jsx`
+
+### 4. Development
+```bash
 npm run dev
 ```
 
-The app boots at `http://localhost:5173` and calls the backend at `http://127.0.0.1:8000` by default.
+---
 
-### Scripts
+## 📈 Pipeline Workflow
 
-| Command | Purpose |
-|---|---|
-| `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | Production build to `dist/` |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint across the project |
+The frontend acts as the final consumer of the NiftyEdge data pipeline:
+1. **API** ingests OHLCV data from Yahoo Finance.
+2. **ML Engine** computes 12+ technical features and generates probabilities.
+3. **Frontend** (NiftyEdge) renders these signals into an actionable, real-time dashboard.
 
-## Configuration
+---
 
-### Backend endpoint
+## 🔗 Related Repositories
+- [⚡ NiftyEdge API](https://github.com/AakashVijeta/NiftyEdge-backend) - The machine learning core.
 
-The backend URL is currently hardcoded in [src/hooks/useSignals.jsx](src/hooks/useSignals.jsx#L4):
+---
 
-```js
-const API = 'http://127.0.0.1:8000'
-```
-
-The chat endpoint is hardcoded in [src/components/ChatPanel.jsx](src/components/ChatPanel.jsx#L39) (Railway production URL). Update these to point at your own backend deployment.
-
-### Netlify Edge Function
-
-[netlify/edge-functions/nifty.js](netlify/edge-functions/nifty.js) proxies Yahoo Finance so the live Nifty 50 price can be fetched from the browser without CORS issues. Routed via `netlify.toml`:
-
-```toml
-[[edge_functions]]
-  path = "/api/nifty"
-  function = "nifty"
-```
-
-## Backend API contract
-
-The dashboard expects two endpoints:
-
-**`GET /signals`** → `Signal[]`
-
-Each signal drives the table, top pick, sector heatmap, and metrics. Fields consumed by the UI include ticker, sector, score, momentum, volume confirmation, and entry/stop levels.
-
-**`POST /chat`** → `{ response: string }`
-
-Request body:
-```json
-{
-  "message": "Rank the top 3 setups today",
-  "signals": [ /* current signals array */ ],
-  "history": [ { "role": "user" | "assistant", "content": "..." } ]
-}
-```
-
-The backend is a separate FastAPI service — point `API` and the chat URL at your own deployment.
-
-## Theming
-
-All colors are centralized as CSS custom properties in [src/index.css](src/index.css). To reskin the app, edit the `:root` block — the current palette is Dracula-based:
-
-| Token | Value | Role |
-|---|---|---|
-| `--bg` | `#282a36` | App background |
-| `--surface` / `--surface2` / `--surface3` | `#343746` / `#3d4051` / `#44475a` | Card layers |
-| `--text` / `--text2` / `--text3` | `#f8f8f2` / `#bfbfd4` / `#6272a4` | Text tiers |
-| `--accent` | `#00d4a0` | Interactive accent (emerald) |
-| `--green` | `#50fa7b` | Bullish / up |
-| `--red` | `#ff5555` | Bearish / down |
-| `--amber` | `#ffb86c` | Neutral / caution |
-
-## Deployment
-
-The app is configured for Netlify:
-
-1. Push to a Git provider connected to Netlify.
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. SPA routing and the `/api/nifty` edge function are handled by [netlify.toml](netlify.toml) and [public/_redirects](public/_redirects).
-
-## License
-
-Private project. All rights reserved unless a license file is added.
+## ⚠️ Disclaimer
+NiftyEdge is an educational research tool. Signals are probabilistic outputs and do **not** constitute financial advice. Trading involves significant risk. Always perform your own due diligence.

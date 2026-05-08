@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const API = 'https://niftyedge-backend.onrender.com'
+const API = 'https://niftyedge-backend-rt2s.onrender.com'
 
 export function useSignals() {
   const [signals, setSignals]         = useState([])

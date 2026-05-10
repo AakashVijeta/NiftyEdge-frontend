@@ -5,9 +5,18 @@ export function useCountUp(target, duration = 1000) {
 
   useEffect(() => {
     const num = parseFloat(target)
-    if (isNaN(num)) { setValue(target); return }
-    if (num === 0)  { setValue(0); return }
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setValue(num); return }
+    if (isNaN(num)) {
+      const t = setTimeout(() => setValue(target), 0)
+      return () => clearTimeout(t)
+    }
+    if (num === 0) {
+      const t = setTimeout(() => setValue(0), 0)
+      return () => clearTimeout(t)
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const t = setTimeout(() => setValue(num), 0)
+      return () => clearTimeout(t)
+    }
 
     const start = performance.now()
     let rafId

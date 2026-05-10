@@ -46,7 +46,7 @@ function useNiftyPrice() {
   return data
 }
 
-export default function TopBar({ onRefetch }) {
+export default function TopBar() {
   const [clock, setClock] = useState(getIST())
   const [flash, setFlash] = useState(false)
   const { price, change, changePct } = useNiftyPrice()
@@ -59,12 +59,17 @@ export default function TopBar({ onRefetch }) {
   }, [])
 
   useEffect(() => {
+    let clearFlash
     if (price !== null && prevPrice.current !== null && price !== prevPrice.current) {
-      setFlash(true)
-      const t = setTimeout(() => setFlash(false), 800)
-      return () => clearTimeout(t)
+      const show = setTimeout(() => setFlash(true), 0)
+      const hide = setTimeout(() => setFlash(false), 800)
+      clearFlash = () => {
+        clearTimeout(show)
+        clearTimeout(hide)
+      }
     }
     prevPrice.current = price
+    return clearFlash
   }, [price])
 
   const isUp      = change >= 0
@@ -106,8 +111,6 @@ export default function TopBar({ onRefetch }) {
         <div className="topbar__divider" />
 
         <span className="topbar__clock">{clock}</span>
-
-        <button className="topbar__refresh" onClick={onRefetch}>↻ Refresh</button>
       </div>
     </header>
   )

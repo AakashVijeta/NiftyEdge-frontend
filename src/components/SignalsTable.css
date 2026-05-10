@@ -1,34 +1,34 @@
-.signals { overflow: hidden; }
-
-.signals__header {
+.signals-table-spotlight {
+  overflow: hidden;
+  height: 100%;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.signals-table-spotlight .signals__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  margin-top: 0.35rem;
+}
+
+.signals__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 1rem 1.25rem 0.85rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 0;
   border-bottom: 1px solid var(--divider);
-}
-
-.signals__title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 0.02em;
-  margin-right: 8px;
-}
-
-.signals__count {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--text3);
 }
 
 .signals__filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px;
 }
 
 .filter-btn {
@@ -38,14 +38,14 @@
   color: var(--text2);
   background: transparent;
   border: 1px solid var(--divider);
-  padding: 4px 11px;
-  border-radius: 20px;
+  padding: 5px 12px;
+  border-radius: 999px;
   cursor: pointer;
-  letter-spacing: 0.02em;
-  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+  letter-spacing: 0.01em;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.1s ease;
 }
-.filter-btn:hover  { background: var(--surface2); color: var(--text); border-color: var(--accent-border); }
-.filter-btn:active { transform: scale(0.97); }
+.filter-btn:hover  { background: var(--surface2); color: var(--text); border-color: rgba(148, 163, 184, 0.28); }
+.filter-btn:active { transform: scale(0.98); }
 .filter-btn--active {
   background: var(--accent-dim);
   border-color: var(--accent-border);
@@ -53,33 +53,43 @@
 }
 
 .signals__empty {
-  padding: 2rem 1.25rem;
-  font-size: 0.85rem;
+  padding: 2.25rem 1.35rem;
+  font-size: 0.88rem;
   color: var(--text3);
   text-align: center;
+  line-height: 1.5;
+}
+
+.signals__scroll {
+  flex: 1;
+  min-height: 220px;
+  overflow: auto;
+  max-height: min(58vh, 520px);
+  margin: 0 -1px -1px;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 /* Table */
 .signals__table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: 0.86rem;
 }
 
 .signals__table thead {
   position: sticky;
-  top: 64px;
-  z-index: 1;
+  top: 0;
+  z-index: 2;
   background: var(--surface2);
 }
 
 .signals__table th {
-  padding: 0.65rem 1rem;
-  font-size: 0.68rem;
-  font-weight: 700;
+  padding: 0.7rem 1rem;
+  font-size: 0.65rem;
+  font-weight: 600;
   color: var(--text3);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-align: left;
   border-bottom: 1px solid var(--divider);
   white-space: nowrap;
@@ -91,54 +101,58 @@
   transition: background 0.15s ease;
 }
 .signals__table tbody tr:last-child { border-bottom: none; }
-.signals__table tbody tr:hover { background: var(--surface2); }
+.signals__table tbody tr:hover { background: rgba(26, 35, 48, 0.55); }
+.signals__table tbody tr:focus-within {
+  background: var(--accent-ring);
+  outline: none;
+}
 
 .signals__table td {
-  padding: 0.7rem 1rem;
+  padding: 0.75rem 1rem;
   vertical-align: middle;
 }
 
 .sig-ticker {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 .sig-sector {
   font-size: 0.7rem;
   color: var(--text3);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .sig-prob-cell { text-align: right; }
 .sig-prob {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--accent-light);
 }
 
-.sig-rsi-cell { text-align: right; min-width: 80px; }
+.sig-rsi-cell { text-align: right; min-width: 88px; }
 .sig-rsi-val {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
   display: block;
   text-align: right;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 .sig-rsi-bar {
   height: 4px;
   background: var(--surface3);
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
-  width: 60px;
+  width: 64px;
   margin-left: auto;
 }
 .sig-rsi-fill {
   height: 100%;
-  border-radius: 2px;
-  transition: width 0.6s ease-out 0.3s;
+  border-radius: 3px;
+  transition: width 0.55s ease-out 0.25s;
 }
 
 .sig-chip-cell { text-align: right; }

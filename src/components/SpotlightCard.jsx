@@ -5,7 +5,7 @@ import './SpotlightCard.css'
 
 const MotionCard = motion.div
 
-const TILT_MAX = 9
+const TILT_MAX = 4
 const TILT_SPRING = { stiffness: 300, damping: 28 }
 const GLOW_SPRING = { stiffness: 180, damping: 22 }
 
@@ -59,7 +59,6 @@ export default function SpotlightCard({
   const hex2e = `${color}2e`
   const hex18 = `${color}18`
   const hex30 = `${color}30`
-  const hex80 = `${color}80`
 
   function handleMouseMove(e) {
     if (reduceMotion) return
@@ -100,15 +99,11 @@ export default function SpotlightCard({
         variant === 'flush' && 'spotlight-card--flush',
         className,
       )}
+      data-dimmed={dimmed ? 'true' : undefined}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       style={motionStyle}
-      animate={{
-        scale: dimmed ? 0.96 : 1,
-        opacity: dimmed ? 0.5 : 1,
-      }}
-      transition={{ duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' }}
     >
       <div
         aria-hidden
@@ -175,13 +170,7 @@ export default function SpotlightCard({
         <div className={cn('spotlight-card__main', mainClassName)}>{children}</div>
       )}
 
-      <div
-        aria-hidden
-        className="spotlight-card__accent-line"
-        style={{
-          background: `linear-gradient(to right, ${hex80}, transparent)`,
-        }}
-      />
+      <div aria-hidden className="spotlight-card__accent-line" />
     </MotionCard>
   )
 }

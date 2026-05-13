@@ -1,7 +1,6 @@
 /**
- * Brand accent (teal) — keep in sync with :root --accent in index.css
- * SpotlightCard builds tints as `${ACCENT_HEX}14`, etc.
+ * Terminal highlight (Bloomberg-style orange) — keep in sync with :root --accent in index.css
  */
-export const ACCENT_HEX = '#14b8a6'
-/** Muted spotlight (matches --text3) for empty / inactive cards */
-export const ACCENT_MUTED_HEX = '#64748b'
+export const ACCENT_HEX = '#ff8c00'
+/** Muted panel chrome */
+export const ACCENT_MUTED_HEX = '#5c5c5c'

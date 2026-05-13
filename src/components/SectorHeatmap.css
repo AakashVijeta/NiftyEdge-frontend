@@ -7,20 +7,25 @@
 }
 
 .heatmap-section__title {
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.01em;
+  color: var(--accent-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin: 0;
   padding: 0 2px;
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
 }
 
 .heatmap-section__empty {
-  padding: 1.5rem 1rem;
-  font-size: 0.88rem;
+  padding: 1.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--text3);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.45;
   border: 1px dashed var(--divider);
   border-radius: var(--radius);
   background: var(--surface);
@@ -29,7 +34,7 @@
 .heatmap-section__grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .heat-spotlight .spotlight-card__title {

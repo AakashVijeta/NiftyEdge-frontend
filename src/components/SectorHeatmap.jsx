@@ -4,9 +4,9 @@ import SpotlightCard from './SpotlightCard'
 import './SectorHeatmap.css'
 
 function heatColor(mom) {
-  if (mom > 0.015) return '#34d399'
-  if (mom > 0)     return '#fbbf24'
-  return '#fb7185'
+  if (mom > 0.015) return '#00c853'
+  if (mom > 0)     return '#ffc107'
+  return '#ff5252'
 }
 
 export default function SectorHeatmap({ signals }) {

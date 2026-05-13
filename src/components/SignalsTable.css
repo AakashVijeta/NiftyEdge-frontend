@@ -11,7 +11,7 @@
   gap: 0;
   flex: 1;
   min-height: 0;
-  margin-top: 0.35rem;
+  margin-top: 0.2rem;
 }
 
 .signals__toolbar {
@@ -19,8 +19,8 @@
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
-  gap: 10px;
-  padding-bottom: 0.9rem;
+  gap: 8px;
+  padding-bottom: 0.45rem;
   margin-bottom: 0;
   border-bottom: 1px solid var(--divider);
 }
@@ -28,24 +28,25 @@
 .signals__filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 
 .filter-btn {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
   color: var(--text2);
-  background: transparent;
+  background: var(--surface2);
   border: 1px solid var(--divider);
-  padding: 5px 12px;
-  border-radius: 999px;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  letter-spacing: 0.01em;
-  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.1s ease;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.1s ease, border-color 0.1s ease, color 0.1s ease;
 }
-.filter-btn:hover  { background: var(--surface2); color: var(--text); border-color: rgba(148, 163, 184, 0.28); }
-.filter-btn:active { transform: scale(0.98); }
+.filter-btn:hover  { background: var(--surface3); color: var(--text); border-color: var(--text3); }
+.filter-btn:active { transform: none; }
 .filter-btn--active {
   background: var(--accent-dim);
   border-color: var(--accent-border);
@@ -53,43 +54,46 @@
 }
 
 .signals__empty {
-  padding: 2.25rem 1.35rem;
-  font-size: 0.88rem;
+  padding: 1.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--text3);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .signals__scroll {
   flex: 1;
-  min-height: 220px;
+  min-height: 200px;
   overflow: auto;
   max-height: min(58vh, 520px);
-  margin: 0 -1px -1px;
-  border-radius: 0 0 var(--radius) var(--radius);
+  margin: 0;
+  border-radius: 0;
 }
 
-/* Table */
+/* Table — terminal grid */
 .signals__table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.86rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
 }
 
 .signals__table thead {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: var(--surface2);
+  background: rgba(255, 140, 0, 0.08);
+  border-bottom: 1px solid var(--accent);
 }
 
 .signals__table th {
-  padding: 0.7rem 1rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--text3);
+  padding: 0.45rem 0.5rem;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  color: var(--accent-light);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
   text-align: left;
   border-bottom: 1px solid var(--divider);
   white-space: nowrap;
@@ -98,60 +102,67 @@
 
 .signals__table tbody tr {
   border-bottom: 1px solid var(--divider);
-  transition: background 0.15s ease;
+  transition: background 0.08s ease;
+}
+.signals__table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
 }
 .signals__table tbody tr:last-child { border-bottom: none; }
-.signals__table tbody tr:hover { background: rgba(26, 35, 48, 0.55); }
+.signals__table tbody tr:hover { background: rgba(255, 140, 0, 0.06); }
 .signals__table tbody tr:focus-within {
   background: var(--accent-ring);
   outline: none;
 }
 
 .signals__table td {
-  padding: 0.75rem 1rem;
+  padding: 0.4rem 0.5rem;
   vertical-align: middle;
 }
 
 .sig-ticker {
-  font-weight: 600;
-  font-size: 0.88rem;
+  font-weight: 700;
+  font-size: 0.75rem;
   color: var(--text);
-  line-height: 1.35;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 .sig-sector {
-  font-size: 0.7rem;
+  font-size: 0.625rem;
+  font-weight: 500;
   color: var(--text3);
-  margin-top: 3px;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .sig-prob-cell { text-align: right; }
 .sig-prob {
   font-family: var(--font-mono);
-  font-size: 0.86rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--accent-light);
 }
 
-.sig-rsi-cell { text-align: right; min-width: 88px; }
+.sig-rsi-cell { text-align: right; min-width: 76px; }
 .sig-rsi-val {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.6875rem;
+  font-weight: 600;
   display: block;
   text-align: right;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 .sig-rsi-bar {
-  height: 4px;
+  height: 3px;
   background: var(--surface3);
-  border-radius: 3px;
+  border-radius: 0;
   overflow: hidden;
-  width: 64px;
+  width: 56px;
   margin-left: auto;
 }
 .sig-rsi-fill {
   height: 100%;
-  border-radius: 3px;
+  border-radius: 0;
   transition: width 0.55s ease-out 0.25s;
 }
 

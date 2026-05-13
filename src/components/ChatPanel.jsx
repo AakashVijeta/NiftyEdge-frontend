@@ -81,22 +81,24 @@ export default function ChatPanel({ signals }) {
 
   return (
     <>
-      <button
-        type="button"
-        className="chat-trigger"
-        onClick={() => setIsOpen(true)}
-        aria-label="Open AI Analyst chat"
-        aria-expanded={isOpen}
-        aria-controls={DRAWER_ID}
-        tabIndex={isOpen ? -1 : 0}
-        aria-hidden={isOpen}
-      >
-        <span className="chat-trigger__icon" aria-hidden>
-          <MessageSquareText size={18} strokeWidth={2} />
-        </span>
-        <span className="chat-trigger__label chat-trigger__label-full">AI Analyst</span>
-        <span className="chat-trigger__label chat-trigger__label-short">AI</span>
-      </button>
+      <div className="chat-trigger-shell">
+        <button
+          type="button"
+          className="chat-trigger"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open AI Analyst chat"
+          aria-expanded={isOpen}
+          aria-controls={DRAWER_ID}
+          tabIndex={isOpen ? -1 : 0}
+          aria-hidden={isOpen}
+        >
+          <span className="chat-trigger__icon" aria-hidden>
+            <MessageSquareText size={18} strokeWidth={2} />
+          </span>
+          <span className="chat-trigger__label chat-trigger__label-full">AI Analyst</span>
+          <span className="chat-trigger__label chat-trigger__label-short">AI</span>
+        </button>
+      </div>
 
       {isOpen && (
         <div

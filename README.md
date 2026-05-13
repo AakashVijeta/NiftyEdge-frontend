@@ -1,8 +1,6 @@
 # 💎 NiftyEdge
 ### The Ultimate Swing Trading Command Center for Nifty 50
 
-![NiftyEdge Dashboard](docs/assets/dashboard.png)
-
 <div align="center">
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
@@ -19,7 +17,7 @@
 
 **NiftyEdge** is a premium, real-time trading dashboard designed to surface high-probability swing trading setups within the Nifty 50 universe. It serves as the visual command center for a proprietary machine-learning engine, providing traders with institutional-grade data visualization and AI-powered technical analysis.
 
-Built with a focus on **Information Density** and **Cinematic UX**, NiftyEdge transforms raw market data into actionable intelligence through a sleek, high-contrast interface.
+Built with a focus on **Information Density** and **Cinematic UX**, NiftyEdge transforms raw market data into actionable intelligence through a sleek, high-contrast terminal interface.
 
 🌐 **Live Demo:** [niftyedge.netlify.app](https://niftyedge.netlify.app)
 
@@ -28,7 +26,7 @@ Built with a focus on **Information Density** and **Cinematic UX**, NiftyEdge tr
 ## ✨ Key Features
 
 - **🎯 Actionable Signals** — A ranked list of setups with real-time confidence scores, RSI indicators, and volume confirmation.
-- **🤖 AI Analyst Sidekick** — Integrated LLM-powered analyst that provides context-aware trade commentary and risk assessment.
+- **🤖 AI Analyst (Liquid Metal)** — Integrated LLM-powered analyst with a custom "liquid metal" UI effect, providing context-aware trade commentary.
 - **🔥 Sector Momentum Heatmap** — Visualize capital flow across key sectors (IT, Energy, Consumer, Auto, etc.) to identify broad market tailwinds.
 - **💎 Spotlight Pick** — A dedicated high-conviction card featuring a granular breakdown of RSI, Volatility Ratios, and Bollinger Band positioning.
 - **📊 Live Market Pulse** — Real-time tracking of Nifty 50 indexing, signal distribution, and aggregate model confidence.
@@ -36,14 +34,15 @@ Built with a focus on **Information Density** and **Cinematic UX**, NiftyEdge tr
 
 ---
 
-## 🎨 Design Philosophy: Cinematic Dark
+## 🎨 Design Philosophy: Bloomberg Terminal Retro-Futurism
 
-NiftyEdge utilizes a **Cinematic Dark** aesthetic optimized for high-density data processing and visual focus during long trading sessions.
+NiftyEdge utilizes a **Bloomberg Terminal** inspired aesthetic, optimized for high-density data processing and zero-distraction focus.
 
-- **Visual Style:** High-contrast cards, glowing confidence bars, and a responsive three-column grid layout.
-- **Typography:** **Inter** for UI clarity and **JetBrains Mono** for technical data points.
-- **Color Palette:** Deep Obsidian (`#0c1018`) foundation with Emerald Green and Electric Teal accents.
-- **Micro-animations:** Smooth state transitions powered by `motion` for an interface that feels alive.
+- **Visual Style:** Ultra-flat cards, sharp borders, and a responsive three-column grid layout.
+- **Liquid UI:** The AI Analyst trigger features a "Liquid Metal" border effect that mimics flowing mercury with non-uniform thickness.
+- **Typography:** **Inter** for UI clarity and **IBM Plex Mono** for a classic terminal feel.
+- **Color Palette:** Near-Black (`#000000`) foundation with **Bloomberg Orange** (`#ff8c00`) highlights and high-contrast status markers.
+- **Stabilized Motion:** Optimized interaction engine ensuring zero-flicker dimming and smooth GPU-accelerated state transitions.
 
 ---
 
@@ -52,8 +51,8 @@ NiftyEdge utilizes a **Cinematic Dark** aesthetic optimized for high-density dat
 | Layer | Technology | Role |
 | :--- | :--- | :--- |
 | **Frontend** | **React 19** | Modern, declarative UI architecture |
-| **Styling** | **Vanilla CSS** | Token-based design system with glassmorphic accents |
-| **Motion** | **Framer Motion** | Fluid animations and interactive UI states |
+| **Styling** | **Vanilla CSS** | High-performance CSS variables and `@property` animations |
+| **Motion** | **Framer Motion** | GPU-accelerated interactive UI states |
 | **Build** | **Vite** | Lightning-fast HMR and optimized production bundling |
 | **Serverless** | **Netlify Edge** | Performance-optimized API proxies and redirects |
 | **API** | **FastAPI** | High-performance backend for ML signal serving |
@@ -64,10 +63,11 @@ NiftyEdge utilizes a **Cinematic Dark** aesthetic optimized for high-density dat
 
 ```text
 ├── src/
-│   ├── components/       # UI Components (SignalsTable, ChatPanel, TopPick, etc.)
+│   ├── components/       # UI Components (SignalsTable, ChatPanel, SpotlightCard, etc.)
 │   ├── hooks/            # Logic (useSignals, useNiftyPrice, useCountUp)
+│   ├── lib/              # Utilities (theme, utils)
 │   ├── App.jsx           # Core dashboard layout shell
-│   └── index.css         # Global design tokens and base styles
+│   └── index.css         # Bloomberg-style design tokens and global styles
 ├── netlify/
 │   └── edge-functions/   # Deno-based edge functions for data proxying
 ├── public/               # Static assets and Netlify redirects
